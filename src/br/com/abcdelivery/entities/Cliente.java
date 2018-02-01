@@ -9,8 +9,8 @@ public class Cliente {
 	private String tel;
 	private String email;
 	private int id_endereco;
-	
-	
+
+
 	public String getCPF() {
 		return CPF;
 	}
@@ -53,5 +53,28 @@ public class Cliente {
 	public void setId_endereco(int id_endereco) {
 		this.id_endereco = id_endereco;
 	}
+
+	public Cliente(String cPF, String nome, String senha, String cel, String tel, String email, int id_endereco) {
+		super();
+		CPF = cPF;
+		this.nome = nome;
+		this.senha = senha;
+		this.cel = cel;
+		this.tel = tel;
+		this.email = email;
+		this.id_endereco = id_endereco;
+	}
+
+	public Cliente() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Cliente [CPF=" + CPF + ", nome=" + nome + ", senha=" + senha + ", cel=" + cel + ", tel=" + tel
+				+ ", email=" + email + ", id_endereco=" + id_endereco + "]";
+	}
+
+
 
 }
