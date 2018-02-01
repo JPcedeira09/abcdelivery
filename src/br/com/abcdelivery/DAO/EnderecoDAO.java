@@ -5,49 +5,40 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import br.com.abcdelivery.entities.Cliente;
-import br.com.abcdelivery.interfaces.InterfaceClienteDAO;
+import br.com.abcdelivery.entities.Endereco;
+import br.com.abcdelivery.interfaces.InterfaceEnderecoDAO;
 import br.com.abcdelivery.util.ConnectionFactory;
 
-public class ClienteDAO implements InterfaceClienteDAO{
+public class EnderecoDAO implements InterfaceEnderecoDAO{
+	
+		private Connection connection; 
 
-	private Connection connection; 
-
-	public ClienteDAO() {
-		this.connection = ConnectionFactory.getConnection();
-	}
-
+		public EnderecoDAO() {
+			this.connection = ConnectionFactory.getConnection();
+		}
+		
+		
 	@Override
-	public String adiconaCliente(Cliente cliente) {
-
-		String query = "INSERT INTO mydb.clientes (CPF, nome, senha, telefone, cel, e-mail) VALUES (?, ?, ?, ?, ?, ?)";
+	public String adiconaEndereco(Endereco endereco) {
+		String query = "";
 
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
-			statement.setString(1, cliente.getCPF());
-			statement.setString(2, cliente.getNome());
-			statement.setString(3, cliente.getSenha());
-			statement.setString(4, cliente.getTel());
-			statement.setString(5, cliente.getCel());
-			statement.setString(6, cliente.getEmail());
-
-			statement.executeQuery();
 
 			return "";
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return "";
 		}
-
 	}
 
 	@Override
-	public List<Cliente> listarClientes() {
-
+	public List<Endereco> listarEndereco() {
 		String query = "";
 
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
+
 			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,8 +47,7 @@ public class ClienteDAO implements InterfaceClienteDAO{
 	}
 
 	@Override
-	public String atualizaCliente(Cliente cliente) {
-
+	public String atualizaEndereco(Endereco endereco) {
 		String query = "";
 
 		try {
@@ -71,8 +61,7 @@ public class ClienteDAO implements InterfaceClienteDAO{
 	}
 
 	@Override
-	public String deletarCliente(String CPF) {
-
+	public String deletarEndereco(String id_endereco) {
 		String query = "";
 
 		try {
@@ -84,7 +73,5 @@ public class ClienteDAO implements InterfaceClienteDAO{
 			return "";
 		}
 	}
-
-
 
 }

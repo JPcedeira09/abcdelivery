@@ -5,49 +5,39 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import br.com.abcdelivery.entities.Cliente;
-import br.com.abcdelivery.interfaces.InterfaceClienteDAO;
+import br.com.abcdelivery.entities.Cardapio;
+import br.com.abcdelivery.interfaces.InterfaceCardapioDAO;
 import br.com.abcdelivery.util.ConnectionFactory;
 
-public class ClienteDAO implements InterfaceClienteDAO{
+public class CardapioDAO implements InterfaceCardapioDAO{
 
-	private Connection connection; 
+		private Connection connection; 
 
-	public ClienteDAO() {
-		this.connection = ConnectionFactory.getConnection();
-	}
-
+		public CardapioDAO() {
+			this.connection = ConnectionFactory.getConnection();
+		}
+		
 	@Override
-	public String adiconaCliente(Cliente cliente) {
-
-		String query = "INSERT INTO mydb.clientes (CPF, nome, senha, telefone, cel, e-mail) VALUES (?, ?, ?, ?, ?, ?)";
+	public String adiconaCardapio(Cardapio cardapio) {
+		String query = "";
 
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
-			statement.setString(1, cliente.getCPF());
-			statement.setString(2, cliente.getNome());
-			statement.setString(3, cliente.getSenha());
-			statement.setString(4, cliente.getTel());
-			statement.setString(5, cliente.getCel());
-			statement.setString(6, cliente.getEmail());
-
-			statement.executeQuery();
 
 			return "";
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return "";
 		}
-
 	}
 
 	@Override
-	public List<Cliente> listarClientes() {
-
+	public List<Cardapio> listarCardapio() {
 		String query = "";
 
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
+
 			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,8 +46,7 @@ public class ClienteDAO implements InterfaceClienteDAO{
 	}
 
 	@Override
-	public String atualizaCliente(Cliente cliente) {
-
+	public String atualizaCardapio(Cardapio cardapio) {
 		String query = "";
 
 		try {
@@ -71,8 +60,7 @@ public class ClienteDAO implements InterfaceClienteDAO{
 	}
 
 	@Override
-	public String deletarCliente(String CPF) {
-
+	public String deletarCardapio(String id_Cardapio) {
 		String query = "";
 
 		try {
@@ -84,7 +72,5 @@ public class ClienteDAO implements InterfaceClienteDAO{
 			return "";
 		}
 	}
-
-
 
 }
